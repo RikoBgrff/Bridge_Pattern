@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Bridge_Pattern
 {
-    interface ILogging
+    public interface ILogging
     {
         IWriter Writer { get; set; }
-        string LogInfo(string data);
-        string LogWarning(string data);
-        string LogError(string data);
+
+        void LogInfo(string message);
+        void LogWarning(string message);
+        void LogError(string message);
     }
 }

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Bridge_Pattern
 {
-    class ConsoleWriter : IWriter
+    public class ConsoleWriter : IWriter
     {
         public void Write(string data)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(data);
         }
     }
 }

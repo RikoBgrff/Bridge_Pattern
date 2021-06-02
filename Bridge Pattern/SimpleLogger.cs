@@ -3,26 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Bridge_Pattern
 {
-    class SimpleLogger : ILogging
+    public class SimpleLogger : ILogging
     {
-        public IWriter Writer { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public IWriter Writer { get; set; }
 
-        public string LogError(string data)
+        public SimpleLogger(IWriter writer)
         {
-            throw new NotImplementedException();
+            Writer = writer;
+        }
+        public void LogInfo(string message)
+        {
+            Writer.Write($"Info: {message}");
         }
 
-        public string LogInfo(string data)
+        public void LogWarning(string message)
         {
-            throw new NotImplementedException();
+            Writer.Write($"Warning: {message}");
         }
 
-        public string LogWarning(string data)
+        public void LogError(string message)
         {
-            throw new NotImplementedException();
+            Writer.Write($"Error: {message}");
         }
     }
 }

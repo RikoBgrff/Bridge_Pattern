@@ -6,23 +6,39 @@ using System.Threading.Tasks;
 
 namespace Bridge_Pattern
 {
-    class DetailedLogger : ILogging
+    public class DetailedLogger : ILogging
     {
-        public IWriter Writer { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public IWriter Writer { get; set; }
 
-        public string LogError(string data)
+        public DetailedLogger(IWriter writer)
         {
-            throw new NotImplementedException();
+            Writer = writer;
+        }
+        public void LogInfo(string message)
+        {
+            Writer.Write(GetInfo("Info", message));
         }
 
-        public string LogInfo(string data)
+        public void LogWarning(string message)
         {
-            throw new NotImplementedException();
+            Writer.Write(GetInfo("Warning", message));
         }
 
-        public string LogWarning(string data)
+        public void LogError(string message)
         {
-            throw new NotImplementedException();
+            Writer.Write(GetInfo("Error", message));
+        }
+
+        private string GetInfo(string logType, string message)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append($"Type: {logType}\n");
+            sb.Append($"Date: {DateTime.Now.ToShortDateString()}\n");
+            sb.Append($"Time: {DateTime.Now.ToShortTimeString()}\n");
+            sb.Append($"Message: {message}\n");
+
+            return sb.ToString();
         }
     }
 }

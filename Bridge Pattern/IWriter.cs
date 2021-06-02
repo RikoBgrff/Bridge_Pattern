@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bridge_Pattern
 {
-    interface IWriter
+   public interface IWriter
     {
         void Write(string data);
     }
